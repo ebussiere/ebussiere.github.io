@@ -1,0 +1,4 @@
+1. Add dynamic title
+2. Add dynamic Y axis values
+3. Adjust bar widths
+4. Animate bars

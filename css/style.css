@@ -1,0 +1,127 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.options-row {
+  justify-content: center;
+}
+.options-container {
+  max-width: 90%;
+}
+
+.box {
+  display: flex;
+
+  position: relative;
+}
+.box-small {
+  width: 100px;
+  background: blue;
+}
+.container {
+  margin-top: 10px;
+}
+.row-main {
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.form-control {
+  width: 200px;
+}
+
+.vert-number-container {
+  width: 100px;
+
+  margin-right: 0px;
+  margin-bottom: 50px;
+  /* background: darkgrey; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  border-right: 2px solid;
+}
+
+.horz-number-container {
+  height: 50px;
+  /* background: darkgrey; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  border-top: 2px solid;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
+}
+.main-container {
+  display: flex;
+
+  padding: 0%;
+  justify-content: space-around;
+}
+.graph-container {
+  background: darkgray;
+  display: flex;
+  padding: 0%;
+  justify-content: space-around;
+}
+.bar-value {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  align-self: center;
+  font-size: 0.5em;
+}
+.axis-value {
+  margin: 0px;
+  width: 50px;
+  /* margin-bottom: 0%; */
+  /* margin-top: 0%; */
+}
+
+.bar-single {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar-stacked {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar-clustered {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box-1 {
+  z-index: 1;
+  /* background: steelblue; */
+}
+.box-2 {
+  background: orange;
+}
+.box-3 {
+  background: yellow;
+}
+.box-4 {
+  background: green;
+}
+.box-5 {
+  background: blue;
+}
+.box-6 {
+  background: indigo;
+}
+.box-7 {
+  background: violet;
+}

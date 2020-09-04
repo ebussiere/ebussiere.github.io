@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Bar Graph</title>
+  </head>
+  <body>
+    <div class="container options-container" id="options">
+      <div class="col">
+        <form>
+          <div class="row my-2 options-row">
+            <div class="col">
+              <h5 class="small">Graph Title Font Size</h5>
+              <select class="form-control-sm" id="graphTitleFontSize">
+                <option value="small">Small</option>
+                <option value="medium" selected="true">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Graph Title Font color</h5>
+              <select class="form-control-sm" id="graphTitleFontColor">
+                <option value="red">Red</option>
+                <option value="black" selected="true">Black</option>
+                <option value="blue">Blue</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Bar Value Placement</h5>
+              <select class="form-control-sm" id="barValuePlacement">
+                <option value="top">Top</option>
+                <option value="center" selected="true">Center</option>
+                <option value="bottom">Bottom</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Bar Color</h5>
+              <select class="form-control-sm" id="barColor">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue" selected="true">Blue</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Bar Value Color</h5>
+              <select class="form-control-sm" id="barValueColor">
+                <option value="white" selected="true">White</option>
+                <option value="black">Black</option>
+              </select>
+            </div>
+            <!-- </div>
+          <div class="row my-2"> -->
+            <div class="col">
+              <h5 class="small">Bar Spacing</h5>
+              <select class="form-control-sm" id="barSpacing">
+                <option value="0.9">Small</option>
+                <option value="0.7" selected="true">Medium</option>
+                <option value="0.5">Large</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Axis Font Size</h5>
+              <select class="form-control-sm" id="chartAxisFontSize">
+                <option value="small">Small</option>
+                <option value="medium" selected="true">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 class="small">Axis Color</h5>
+              <select class="form-control-sm" id="chartAxisFontColor">
+                <option value="grey" selected="true">Grey</option>
+                <option value="red">Red</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <h4 class="text-center" id="graphtitle">Title</h4>
+    <div class="container main-container">
+      <div class="row row-main">
+        <div class="container vert-number-container text-right"></div>
+
+        <div>
+          <div class="container graph-container" id="barchartpane"></div>
+          <div class="container horz-number-container text-center mt-0"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+    <script src="js/bargraphlib.js"></script>
+  </body>
+</html>
