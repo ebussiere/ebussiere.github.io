@@ -3,9 +3,18 @@
   padding: 0px;
   box-sizing: border-box;
 }
+.bar-jumbotron {
+  padding: 10px;
+  height: 100px;
+}
 
+select {
+  margin-bottom: 10px;
+  width: 150px;
+}
 .options-row {
   justify-content: center;
+  flex-direction: column;
 }
 .options-container {
   max-width: 90%;

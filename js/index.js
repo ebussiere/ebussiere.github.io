@@ -1,5 +1,5 @@
 const singleData = {
-  bartitle: "Single Value Bar Chart",
+  bartitle: "Single Values",
   values: [
     { barLabel: "A", barValues: [1100] },
     { barLabel: "B", barValues: [800] },
@@ -8,7 +8,7 @@ const singleData = {
 };
 
 const stackedData = {
-  bartitle: "Stacked Bar Chart",
+  bartitle: "Stacked Values",
   values: [
     { barLabel: "A", barValues: [400, 200, 100] }, //1425
     { barLabel: "B", barValues: [700, 100] }, //900
@@ -58,6 +58,7 @@ $(document).ready(function () {
 });
 
 function optionsBuilder() {
+  let sampleDataResult = document.querySelector("#sampleDataSet").value;
   let barPlacementResult = document.querySelector("#barValuePlacement").value;
   let barValueColorResult = document.querySelector("#barValueColor").value;
   let barColorResult = document.querySelector("#barColor").value;
@@ -78,6 +79,15 @@ function optionsBuilder() {
   options.graphTitleFontColor = graphTitleFontColor;
   drawBarChart(data, options, element);
 }
+
+$("#sampleDataSet").on("change", function () {
+  if (this.value === "single") {
+    data = singleData;
+  } else if (this.value === "stacked") {
+    data = stackedData;
+  }
+  optionsBuilder();
+});
 
 $("#barValuePlacement").on("change", function () {
   options.barValuePlacement = this.value;
