@@ -9,7 +9,7 @@ This is a simple javascript library allowing a simple bar chart to be rendered i
 A customizable sample can be found here:
 ebussiere.github.io
 
-![](resources/img/chartsample.png)
+![](img/chartsample.png)
 
 ## Built-In Functions
 
