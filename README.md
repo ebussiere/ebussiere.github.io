@@ -7,7 +7,7 @@
 This is a simple javascript library allowing a simple bar chart to be rendered into an element on a web page.
 
 A customizable sample can be found here:
-ebussiere.github.io
+https://ebussiere.github.io/
 
 ![](img/chartsample.png)
 
