@@ -1,34 +1,43 @@
 const singleData = {
-  bartitle: "Single Bar",
-  values: [{ barLabel: "a", barValues: [600, 200, 150] }],
+  bartitle: "Single Value Bar Chart",
+  values: [
+    { barLabel: "A", barValues: [1100] },
+    { barLabel: "B", barValues: [800] },
+    { barLabel: "C", barValues: [400] },
+  ],
 };
 
 const stackedData = {
-  bartitle: "Stacked Bars",
+  bartitle: "Stacked Bar Chart",
   values: [
-    { barLabel: "a", barValues: [600, 400, 200] }, //1200
-    { barLabel: "b", barValues: [500, 400, 200] }, //750
-    { barLabel: "c", barValues: [400, 300, 250] }, //770
-    { barLabel: "d", barValues: [700, 500, 225] }, //1425
-    { barLabel: "e", barValues: [800, 500] }, //900
-    { barLabel: "f", barValues: [800, 400, 100] }, //800
-    { barLabel: "g", barValues: [400] }, //800
+    { barLabel: "A", barValues: [400, 200, 100] }, //1425
+    { barLabel: "B", barValues: [700, 100] }, //900
+    { barLabel: "C", barValues: [600] }, //800
+    { barLabel: "D", barValues: [400, 200, 100] }, //1425
+    { barLabel: "E", barValues: [700, 100] }, //900
+    { barLabel: "F", barValues: [600, 200, 100] }, //800
   ],
 };
 
-//Future Option
-const clusteredData = {
-  bartitle: "Clustered Bars",
+const refaceData = {
+  bartitle: "Number of Hillarious Refaces (August 2020)",
   values: [
-    { label: "a", value1: 100 },
-    { label: "b", value1: 200 },
-    { label: "c", value1: 300 },
-    { label: "d", value1: 400 },
-    { label: "e", value1: 500 },
+    { barLabel: "Geoff", barValues: [10] },
+    { barLabel: "Eddy", barValues: [9] },
+    { barLabel: "Bonnie", barValues: [19] },
   ],
 };
+
+const jokeData = {
+  bartitle: "Number of Hillarious Jokes Told (November 1973 to present)",
+  values: [
+    { barLabel: "Clem", barValues: [700] },
+    { barLabel: "Eddy", barValues: [650] },
+    { barLabel: "Danny", barValues: [800] },
+  ],
+};
+
 let data = stackedData;
-
 let options = {
   graphHeight: 500,
   graphWidth: 500,

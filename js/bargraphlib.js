@@ -174,7 +174,18 @@ function animateBar(barSegment, finalHeight) {
       height: 0,
       height: finalHeight,
     },
-    500,
+    1000,
+    "swing"
+  );
+  //animateBar2();
+}
+function animateBar2(finalHeight) {
+  $("#bs20").animate(
+    {
+      height: finalHeight,
+      height: 0,
+    },
+    4000,
     "swing"
   );
 }
