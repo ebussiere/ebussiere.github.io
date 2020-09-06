@@ -1,39 +1,22 @@
+let element = document.querySelector(".graph-container");
 const singleData = {
-  bartitle: "Single Values",
-  values: [
-    { barLabel: "A", barValues: [1100] },
-    { barLabel: "B", barValues: [800] },
-    { barLabel: "C", barValues: [400] },
+  chartTitle: "Single Value Bars",
+  bars: [
+    { label: "A", values: [1100] },
+    { label: "B", values: [800] },
+    { label: "C", values: [400] },
   ],
 };
 
 const stackedData = {
-  bartitle: "Stacked Values",
-  values: [
-    { barLabel: "A", barValues: [400, 200, 100] }, //1425
-    { barLabel: "B", barValues: [700, 100] }, //900
-    { barLabel: "C", barValues: [600] }, //800
-    { barLabel: "D", barValues: [400, 200, 100] }, //1425
-    { barLabel: "E", barValues: [700, 100] }, //900
-    { barLabel: "F", barValues: [600, 200, 100] }, //800
-  ],
-};
-
-const refaceData = {
-  bartitle: "Number of Hillarious Refaces (August 2020)",
-  values: [
-    { barLabel: "Geoff", barValues: [10] },
-    { barLabel: "Eddy", barValues: [9] },
-    { barLabel: "Bonnie", barValues: [19] },
-  ],
-};
-
-const jokeData = {
-  bartitle: "Number of Hillarious Jokes Told (November 1973 to present)",
-  values: [
-    { barLabel: "Clem", barValues: [700] },
-    { barLabel: "Eddy", barValues: [650] },
-    { barLabel: "Danny", barValues: [800] },
+  chartTitle: "Stacked Value Bars",
+  bars: [
+    { label: "A", values: [400, 200, 100] },
+    { label: "B", values: [700, 100] },
+    { label: "C", values: [600, 50] },
+    { label: "D", values: [400, 200, 100] },
+    { label: "E", values: [700, 100] },
+    { label: "F", values: [600, 200, 100] },
   ],
 };
 
@@ -43,7 +26,6 @@ let options = {
   graphWidth: 500,
   graphTitleFontColor: "black",
   graphTitleFontSize: "medium",
-  style: "single-bar",
   barvaluePlacement: "center",
   barValueColor: "white",
   barColors: ["#021140", "#1b578c", "#2976a6"],
@@ -51,17 +33,10 @@ let options = {
   chartAxisFontSize: "medium",
   chartAxisFontColor: "black",
 };
-let element = document.querySelector(".graph-container");
-
-$(document).ready(function () {
-  optionsBuilder();
-});
 
 function optionsBuilder() {
-  let sampleDataResult = document.querySelector("#sampleDataSet").value;
   let barPlacementResult = document.querySelector("#barValuePlacement").value;
   let barValueColorResult = document.querySelector("#barValueColor").value;
-  let barColorResult = document.querySelector("#barColor").value;
   let barSpacingResult = document.querySelector("#barSpacing").value;
   let graphTitleFontColor = document.querySelector("#graphTitleFontColor")
     .value;
@@ -70,7 +45,6 @@ function optionsBuilder() {
   let chartAxisFontSize = document.querySelector("#chartAxisFontSize").value;
 
   options.barValuePlacement = barPlacementResult;
-  options.barColors = barColorResult;
   options.barValueColor = barValueColorResult;
   options.barSpacing = barSpacingResult;
   options.chartAxisFontSize = chartAxisFontSize;
@@ -79,6 +53,10 @@ function optionsBuilder() {
   options.graphTitleFontColor = graphTitleFontColor;
   drawBarChart(data, options, element);
 }
+
+$(document).ready(function () {
+  optionsBuilder();
+});
 
 $("#sampleDataSet").on("change", function () {
   if (this.value === "single") {
@@ -95,7 +73,13 @@ $("#barValuePlacement").on("change", function () {
 });
 
 $("#barColor").on("change", function () {
-  options.barColor = this.value;
+  if (this.value === "red") {
+    options.barColors = ["#510908", "#91100e", "#b71412"];
+  } else if (this.value === "green") {
+    options.barColors = ["#003543", "#046173", "#02a3a6"];
+  } else if (this.value === "blue") {
+    options.barColors = ["#021140", "#1b578c", "#2976a6"];
+  }
   optionsBuilder();
 });
 

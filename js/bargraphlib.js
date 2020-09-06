@@ -1,5 +1,4 @@
-//let colors = [];
-//#region  Entry function
+//Entry function
 function drawBarChart(data, options, element) {
   $(".vert-number-container").empty();
   $(element).css("height", options.graphHeight);
@@ -9,14 +8,13 @@ function drawBarChart(data, options, element) {
   placeBars(data, element, options);
   setPostRenderOptions(options);
 }
-//#endregion
 
-//#region Get Max Bar Value
+//Get Max Bar Value
 let maxBarValue = function () {
   let barValueTotals = [];
-  let myArray = Array.from(data.values);
+  let myArray = Array.from(data.bars);
   for (let i = 0; i < myArray.length; i++) {
-    let barTotal = myArray[i].barValues;
+    let barTotal = myArray[i].values;
     barValueTotals.push(barTotal.reduce(myFunc));
     function myFunc(total, num) {
       return total + num;
@@ -27,23 +25,22 @@ let maxBarValue = function () {
   });
   return maxBarValueTotal;
 };
-//#endregion
 
-//#region Calculate Y Axis labels from maxBarValue
+//Calculate Y Axis labels from maxBarValue
 const yAxisValues = function (data) {
   var result = [];
-  const Increments = [1, 2, 5];
-  let res = 0;
+  const incrementPrefixes = [1, 2, 5];
+  let currentResult = 0;
   let resArray = [-1, -1];
   let p = 0;
   let maxV = maxBarValue(data);
-  while (res < maxV) {
-    for (let i = 0; i < Increments.length; i++) {
-      res = Increments[i] * 10 ** p;
+  while (currentResult < maxV) {
+    for (let i = 0; i < incrementPrefixes.length; i++) {
+      currentResult = incrementPrefixes[i] * 10 ** p;
       if (maxV > resArray[0] && maxV < resArray[1]) {
       } else {
         resArray[0] = resArray[1];
-        resArray[1] = res;
+        resArray[1] = currentResult;
       }
     }
     p++;
@@ -53,18 +50,11 @@ const yAxisValues = function (data) {
   }
   return result;
 };
-//#endregion
 
-//#region Options
+//Options
 function setPreRenderOptions() {
   //Bar Color
-  if (options.barColors === "red") {
-    colors = ["#510908", "#91100e", "#b71412"];
-  } else if (options.barColors === "green") {
-    colors = ["#003543", "#046173", "#02a3a6"];
-  } else if (options.barColors === "blue") {
-    colors = ["#021140", "#1b578c", "#2976a6"];
-  }
+  colors = Array.from(options.barColors);
 }
 function setPostRenderOptions() {
   //Graph Title Options
@@ -72,7 +62,7 @@ function setPostRenderOptions() {
     $("#graphtitle").css("color", "red");
   } else if (options.graphTitleFontColor === "blue") {
     $("#graphtitle").css("color", "blue");
-  } else if (options.graphTitleFontColor === "black") {
+  } else {
     $("#graphtitle").css("color", "black");
   }
 
@@ -80,7 +70,7 @@ function setPostRenderOptions() {
     $("#graphtitle").css("font-size", "1em");
   } else if (options.graphTitleFontSize === "medium") {
     $("#graphtitle").css("font-size", "1.25em");
-  } else if (options.graphTitleFontSize === "large") {
+  } else {
     $("#graphtitle").css("font-size", "1.5em");
   }
 
@@ -95,7 +85,7 @@ function setPostRenderOptions() {
   //Bar internal Value Color
   if (options.barValueColor === "black") {
     $(".bar-value").css("color", "black");
-  } else if (options.barValueColor === "white") {
+  } else {
     $(".bar-value").css("color", "white");
   }
 
@@ -104,7 +94,7 @@ function setPostRenderOptions() {
     $(".axis-value").css("color", "grey");
     $(".horz-number-container").css("border-top", "2px solid grey");
     $(".vert-number-container").css("border-right", "2px solid grey");
-  } else if (options.chartAxisFontColor === "red") {
+  } else {
     $(".axis-value").css("color", "red");
     $(".horz-number-container").css("border-top", "2px solid red");
     $(".vert-number-container").css("border-right", "2px solid red");
@@ -117,9 +107,8 @@ function setPostRenderOptions() {
     $(".axis-value").css("font-size", "1.5rem");
   }
 }
-//#endregion
 
-//#region Create Y axis labels
+//Create Y axis labels
 function buildYAxis(yAxisValues) {
   $(".vert-number-container").css("height", options.graphHeight);
   for (let i = 0; i < 6; i++) {
@@ -128,46 +117,42 @@ function buildYAxis(yAxisValues) {
     );
   }
 }
-//#endregion
 
-//#region Create Bars and bar labels
+//Create Bars and bar labels
 function placeBars() {
   $(element).empty();
   let elementHeight = $(element).css("height").substring(0, 3);
   let elementWidth = $(element).css("width").substring(0, 3);
 
-  //console.log(maxy);
   $(".horz-number-container").empty();
-  $("#graphtitle").text(data.bartitle);
+  $("#graphtitle").text(data.chartTitle);
   $(".horz-number-container").css("width", options.graphWidth);
 
-  //For Each Data element
-  for (let i = 0; i < data.values.length; i++) {
-    let barValues = data.values[i].barValues;
+  //For each bar
+  for (let i = 0; i < data.bars.length; i++) {
+    let values = data.bars[i].values;
     let maxY = yAxisValues()[5];
-    console.log(maxY);
     $("#barchartpane").append(`<div class="bar-container">
   <div class="bar" id=bar${i} style="width:${
-      (elementWidth * options.barSpacing) / data.values.length
+      (elementWidth * options.barSpacing) / data.bars.length
     }px;">
     </div>
   </div>
 </div>`);
-
     $(".horz-number-container").append(
-      `<h5 class="axis-value">${data.values[i].barLabel}</h5>`
+      `<h5 class="axis-value">${data.bars[i].label}</h5>`
     );
-    console.log(barValues);
-    for (let j = 0; j < barValues.length; j++) {
-      $(`#bar${i}`).prepend(`<div class="box box-1" id=bs${i}${j}>
-      <h5 class="bar-value">${barValues[j]}</h5>`);
+    for (let j = 0; j < values.length; j++) {
+      $(`#bar${i}`).prepend(`<div class="box bar-segment" id=bs${i}${j}>
+      <h5 class="bar-value">${values[j]}</h5>`);
       $(`#bs${i}${j}`).css("background", `${colors[j]}`);
       let barSegment = `#bs${i}${j}`;
-      let finalHeight = (barValues[j] * elementHeight) / maxY;
+      let finalHeight = (values[j] * elementHeight) / maxY;
       animateBar(barSegment, finalHeight);
     }
   }
 }
+//Animate bars from 0 height to calculated height in one second
 function animateBar(barSegment, finalHeight) {
   $(barSegment).animate(
     {
@@ -175,17 +160,6 @@ function animateBar(barSegment, finalHeight) {
       height: finalHeight,
     },
     1000,
-    "swing"
-  );
-  //animateBar2();
-}
-function animateBar2(finalHeight) {
-  $("#bs20").animate(
-    {
-      height: finalHeight,
-      height: 0,
-    },
-    4000,
     "swing"
   );
 }
