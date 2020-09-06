@@ -7,7 +7,9 @@
   padding: 10px;
   height: 150px;
 }
-
+.btn {
+  margin: auto;
+}
 select {
   margin-bottom: 10px;
   width: 150px;
